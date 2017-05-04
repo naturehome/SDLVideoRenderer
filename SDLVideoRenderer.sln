@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDLVideoRenderer", "SDLVideoRenderer\SDLVideoRenderer.vcxproj", "{527A2369-3C46-480E-A05E-BAB15341BEF4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TesterApp", "TesterApp\TesterApp.vcxproj", "{1C451955-5666-4D6C-B6A4-B01AF77CB7D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{527A2369-3C46-480E-A05E-BAB15341BEF4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{527A2369-3C46-480E-A05E-BAB15341BEF4}.Debug|Win32.Build.0 = Debug|Win32
+		{527A2369-3C46-480E-A05E-BAB15341BEF4}.Release|Win32.ActiveCfg = Release|Win32
+		{527A2369-3C46-480E-A05E-BAB15341BEF4}.Release|Win32.Build.0 = Release|Win32
+		{1C451955-5666-4D6C-B6A4-B01AF77CB7D2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1C451955-5666-4D6C-B6A4-B01AF77CB7D2}.Debug|Win32.Build.0 = Debug|Win32
+		{1C451955-5666-4D6C-B6A4-B01AF77CB7D2}.Release|Win32.ActiveCfg = Release|Win32
+		{1C451955-5666-4D6C-B6A4-B01AF77CB7D2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
