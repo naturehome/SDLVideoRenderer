@@ -61,7 +61,57 @@ HRESULT CVideoRender::CheckMediaType(const CMediaType *pmt)
 	return S_OK;
 }
 
+/*
+HRESULT CVideoRender::IsDefaultTargetRect()
+{
+	return S_OK;
+}
 
+HRESULT CVideoRender::SetDefaultTargetRect()
+{
+	return S_OK;
+}
+
+HRESULT CVideoRender::SetTargetRect(RECT *pTargetRect)
+{
+	return S_OK;
+}
+
+HRESULT CVideoRender::GetTargetRect(RECT *pTargetRect)
+{
+	return S_OK;
+}
+
+HRESULT CVideoRender::IsDefaultSourceRect()
+{
+	return S_OK;
+}
+
+HRESULT CVideoRender::SetDefaultSourceRect()
+{
+	return S_OK;
+}
+
+HRESULT CVideoRender::SetSourceRect(RECT *pSourceRect)
+{
+	return S_OK;
+}
+
+HRESULT CVideoRender::GetSourceRect(RECT *pSourceRect)
+{
+	return S_OK;
+}
+
+HRESULT CVideoRender::GetStaticImage(long *pBufferSize, long *pDIBImage)
+{
+	return S_OK;
+}
+
+VIDEOINFOHEADER* CVideoRender::GetVideoFormat()
+{
+	return nullptr;
+}
+*/
 void CVideoRender::CreateDefaultWindow()
 {
 	CVideoWindow wnd;
@@ -197,7 +247,17 @@ STDMETHODIMP CVideoRender::GetBorderColor(COLORREF *lpClr)
 
 STDMETHODIMP CVideoRender::GetCurrentImage(BYTE **lpDib)
 {
-	return m_sdlRenderer->GetCurrentImage(lpDib);
+	//if (HaveCurrentSample())
+	{
+		IMediaSample * pMediaSample = GetCurrentSample();
+
+		if (pMediaSample == NULL)
+		{
+			return E_UNEXPECTED;
+		}
+		pMediaSample->Release();
+	}
+	return S_OK;
 }
 
 STDMETHODIMP CVideoRender::GetMaxIdealVideoSize(LONG *lpWidth, LONG *lpHeight)
@@ -223,6 +283,8 @@ STDMETHODIMP CVideoRender::GetNativeVideoSize(LONG *lpWidth, LONG *lpHeight, LON
 
 STDMETHODIMP CVideoRender::GetVideoPosition(LPRECT lpSRCRect, LPRECT lpDSTRect)
 {
+	long width = 0;
+	long height = 0;
 	return m_sdlRenderer->GetVideoPosition(lpSRCRect, lpDSTRect);
 }
 

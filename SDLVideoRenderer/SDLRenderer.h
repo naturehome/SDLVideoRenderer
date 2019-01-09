@@ -1,13 +1,13 @@
 #pragma once
 
-#include "streams.h"
+#include <streams.h>
 #include <sdl.h>
 #include "IVideoRenderer.h"
 #include "atlbase.h"
 #include <math.h>
 
 
-class CSDLRenderer
+class CSDLRenderer 
 {
 public:
     CSDLRenderer(void);

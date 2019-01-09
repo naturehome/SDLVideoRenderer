@@ -7,7 +7,7 @@
 #include "Dvdmedia.h"
 #include "ColorSpaceConverter.h"
 
-class CVideoRender : public CBaseVideoRenderer, public ISDLWindowlessControl, public ISDLFilterConfig
+class CVideoRender : public CBaseVideoRenderer/*, public  CBaseControlVideo*/, public ISDLWindowlessControl, public ISDLFilterConfig
 {
 public:
 	DECLARE_IUNKNOWN;
@@ -19,6 +19,17 @@ public:
     virtual HRESULT CheckMediaType(const CMediaType *pmt);
 	virtual HRESULT SetMediaType(const CMediaType *pmt);
 	virtual HRESULT StartStreaming();
+
+	//virtual HRESULT IsDefaultTargetRect();
+	//virtual HRESULT SetDefaultTargetRect();
+	//virtual HRESULT SetTargetRect(RECT *pTargetRect);
+	//virtual HRESULT GetTargetRect(RECT *pTargetRect);
+	//virtual HRESULT IsDefaultSourceRect();
+	//virtual HRESULT SetDefaultSourceRect();
+	//virtual HRESULT SetSourceRect(RECT *pSourceRect);
+	//virtual HRESULT GetSourceRect(RECT *pSourceRect);
+	//virtual HRESULT GetStaticImage(__inout long *pBufferSize, __out_bcount_part(*pBufferSize, *pBufferSize) long *pDIBImage);
+	//virtual VIDEOINFOHEADER *GetVideoFormat();
 
 	static CUnknown * WINAPI CreateInstance(LPUNKNOWN lpunk, HRESULT *phr); 
 	STDMETHODIMP NonDelegatingQueryInterface(REFIID riid, void **ppv);
@@ -42,7 +53,6 @@ public:
 
 private:
 	HWND m_hWnd;
-	//CD2DRenderer* m_renderer;
     CSDLRenderer* m_sdlRenderer;
 	HANDLE m_event;
 	BITMAPINFOHEADER m_bmpInfo;

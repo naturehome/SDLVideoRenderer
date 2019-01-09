@@ -78,8 +78,10 @@ HRESULT CSDLRenderer::GetNativeVideoSize(LONG *lpWidth, LONG *lpHeight, LONG *lp
 	*lpWidth = m_pBitmapInfo.biWidth;
 	*lpHeight = abs(m_pBitmapInfo.biHeight);
 	LONG nGCD = CalculateGCD(*lpWidth, *lpHeight);
-	*lpARWidth = (*lpWidth) / nGCD;
-	*lpARHeight = (*lpHeight) / nGCD;
+	if (lpARWidth)
+		*lpARWidth = (*lpWidth) / nGCD;
+	if (lpARHeight)
+		*lpARHeight = (*lpHeight) / nGCD;
 	return S_OK;
 }
 
@@ -137,20 +139,20 @@ HRESULT CSDLRenderer::SetVideoPosition(const LPRECT lpSRCRect, const LPRECT lpDS
 	else
 		m_srcRect = { 0 };
 
+
 	if (lpDSTRect)
 		m_dstRect = { lpDSTRect->left, lpDSTRect->top, lpDSTRect->right - lpDSTRect->left, lpDSTRect->bottom - lpDSTRect->top };
-	else
-		m_dstRect = { 0 };
-
+	else 
+		m_srcRect = { 0 };
 	return S_OK;
 }
 
 HRESULT CSDLRenderer::RepaintVideo(HWND hwnd, HDC  hdc)
 {
 	
-	/*if (m_pRenderer)
-		SDL_RenderPresent(m_pRenderer);
-*/
+//	if (m_pRenderer)
+//		SDL_RenderPresent(m_pRenderer);
+
 	return S_OK;
 }
 
@@ -196,8 +198,6 @@ HRESULT CSDLRenderer::DrawSample(const BYTE* pRgb32Buffer)
 	SDL_SetRenderDrawColor(m_pRenderer, GetRValue(m_BorderColor), GetGValue(m_BorderColor), GetBValue(m_BorderColor), 255);
     SDL_RenderClear(m_pRenderer);
 
-
-
 	if (m_bFlipHorizontally)
 	{
 		if (m_pRgb32Buffer == NULL)
@@ -218,6 +218,8 @@ HRESULT CSDLRenderer::DrawSample(const BYTE* pRgb32Buffer)
    
 	if (m_dstRect.w != 0 && m_dstRect.h != 0)
 	{
+		RECT rt;
+		::GetClientRect(m_hWndTarget, &rt);
 		SDL_RenderCopy(m_pRenderer, m_pbmp, NULL, &m_dstRect);
 		SDL_RenderPresent(m_pRenderer);
 	}
