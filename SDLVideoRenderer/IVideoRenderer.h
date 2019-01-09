@@ -28,13 +28,13 @@ DECLARE_INTERFACE_(ISDLWindowlessControl, IUnknown)
 	STDMETHOD(GetCurrentImage)(BYTE **lpDib) PURE;
 	STDMETHOD(GetMaxIdealVideoSize)(LONG *lpWidth, LONG *lpHeight) PURE;
 	STDMETHOD(GetMinIdealVideoSize)(LONG *lpWidth, LONG *lpHeight) PURE;
-    STDMETHOD(GetNativeVideoSize)(LONG *lpWidth, LONG *lpHeight, LONG *lpARWidth, LONG *lpARHeight) PURE;
+    	STDMETHOD(GetNativeVideoSize)(LONG *lpWidth, LONG *lpHeight, LONG *lpARWidth, LONG *lpARHeight) PURE;
 	STDMETHOD(GetVideoPosition)(LPRECT lpSRCRect, LPRECT lpDSTRect) PURE;
 	STDMETHOD(RepaintVideo)(HWND hwnd, HDC  hdc) PURE;
 	STDMETHOD(SetAspectRatioMode)(DWORD AspectRatioMode) PURE;
-    STDMETHOD(SetVideoClippingWindow)(HWND hwnd) PURE;
+    	STDMETHOD(SetVideoClippingWindow)(HWND hwnd) PURE;
 	STDMETHOD(SetBorderColor)(COLORREF lpClr) PURE;
-    STDMETHOD(SetVideoPosition)(const LPRECT lpSRCRect,const LPRECT lpDSTRect) PURE;
+    	STDMETHOD(SetVideoPosition)(const LPRECT lpSRCRect,const LPRECT lpDSTRect) PURE;
 };
 
 DECLARE_INTERFACE_(ISDLFilterConfig, IUnknown)
